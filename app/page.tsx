@@ -6,7 +6,7 @@ export default function HomePage() {
     <section className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl flex-col items-center gap-12 px-6 py-16 md:flex-row md:py-0">
       <div className="flex-1 animate-fade-in-up text-center md:text-left">
         <p className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-          Développeur Web
+          Chef de Projet Digital
         </p>
         <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
           Fayçal Bouzid

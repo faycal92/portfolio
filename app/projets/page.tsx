@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Projets",
   description:
-    "Découvrez les projets web réalisés par Fayçal Bouzid : PrivateMove, ShopEase et TaskFlow.",
+    "Découvrez PrivateMove, le site de réservation VTC développé par Fayçal Bouzid.",
 };
 
 type Project = {
@@ -20,27 +20,17 @@ const PROJECTS: Project[] = [
   {
     name: "PrivateMove",
     description:
-      "Site web complet pour un service de chauffeur VTC à Paris. Formulaire de réservation avec calcul de prix en temps réel, paiement Stripe, notifications WhatsApp automatiques.",
-    technologies: ["Next.js", "Tailwind CSS", "Google Maps API", "Stripe", "Twilio"],
+      "Site web complet pour un service de chauffeur VTC à Paris. Formulaire de réservation avec calcul de prix en temps réel, paiement Stripe, notifications WhatsApp automatiques. Intégration de l'API Google Maps avec autocomplétion intelligente des adresses.",
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "Google Maps API (autocomplétion des adresses)",
+      "Stripe (paiement sécurisé)",
+      "Twilio (notifications WhatsApp automatiques)",
+    ],
     badge: "PageSpeed 100/100",
     theme: "gold",
     link: "https://privatemove.fr",
-  },
-  {
-    name: "ShopEase",
-    description:
-      "Application e-commerce complète avec gestion des produits, panier d'achat, paiement en ligne et tableau de bord administrateur.",
-    technologies: ["Next.js", "MySQL", "Stripe", "Tailwind CSS"],
-    badge: "Projet personnel",
-    theme: "blue",
-  },
-  {
-    name: "TaskFlow",
-    description:
-      "Application de gestion de tâches et de projets pour équipes. Tableau Kanban, assignation de tâches, notifications en temps réel.",
-    technologies: ["React", "Node.js", "MySQL", "Tailwind CSS"],
-    badge: "Projet personnel",
-    theme: "blue",
   },
 ];
 
@@ -132,12 +122,12 @@ export default function ProjetsPage() {
           Mes projets
         </h1>
         <p className="mt-4 text-lg text-slate-600">
-          Une sélection de réalisations, du site en production à mes projets
-          personnels d&apos;expérimentation.
+          Une réalisation concrète, du cahier des charges à la mise en
+          production.
         </p>
       </div>
 
-      <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto mt-14 grid max-w-xl gap-8">
         {PROJECTS.map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}

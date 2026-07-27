@@ -5,7 +5,7 @@ import ContactForm from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contactez Fayçal Bouzid, développeur web disponible en CDI et freelance.",
+    "Contactez Fayçal Bouzid, Chef de Projet Digital disponible en CDI et freelance.",
 };
 
 export default function ContactPage() {
@@ -48,22 +48,31 @@ export default function ContactPage() {
             <ul className="flex flex-col gap-3 text-sm">
               <li>
                 <Link
-                  href="mailto:movevtc.fr@gmail.com"
+                  href="mailto:faycalbo@hotmail.fr"
                   className="flex items-center gap-2 text-slate-600 transition-colors hover:text-primary"
                 >
                   <span aria-hidden="true">✉</span>
-                  movevtc.fr@gmail.com
+                  faycalbo@hotmail.fr
                 </Link>
               </li>
               <li>
                 <Link
-                  href="https://github.com/faycal92"
+                  href="tel:+33750978900"
+                  className="flex items-center gap-2 text-slate-600 transition-colors hover:text-primary"
+                >
+                  <span aria-hidden="true">☎</span>
+                  +33 7 50 97 89 00
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://www.linkedin.com/in/faycal-bouzid"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-slate-600 transition-colors hover:text-primary"
                 >
-                  <span aria-hidden="true">⌥</span>
-                  github.com/faycal92
+                  <span aria-hidden="true">in</span>
+                  linkedin.com/in/faycal-bouzid
                 </Link>
               </li>
             </ul>

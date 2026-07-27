@@ -9,15 +9,15 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://faycalbouzid.fr"),
   title: {
-    default: "Fayçal Bouzid — Développeur Web",
+    default: "Fayçal Bouzid — Chef de Projet Digital",
     template: "%s | Fayçal Bouzid",
   },
   description:
-    "Portfolio de Fayçal Bouzid, développeur web spécialisé en Next.js, React et PHP. Disponible en CDI et freelance.",
+    "Portfolio de Fayçal Bouzid, Chef de Projet Digital spécialisé en Next.js, React et PHP. Disponible en CDI et freelance.",
   openGraph: {
-    title: "Fayçal Bouzid — Développeur Web",
+    title: "Fayçal Bouzid — Chef de Projet Digital",
     description:
-      "Portfolio de Fayçal Bouzid, développeur web spécialisé en Next.js, React et PHP. Disponible en CDI et freelance.",
+      "Portfolio de Fayçal Bouzid, Chef de Projet Digital spécialisé en Next.js, React et PHP. Disponible en CDI et freelance.",
     locale: "fr_FR",
     type: "website",
   },

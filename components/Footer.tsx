@@ -7,18 +7,18 @@ export default function Footer() {
         <p className="text-sm text-slate-500">© 2026 Fayçal Bouzid</p>
         <div className="flex items-center gap-6">
           <Link
-            href="https://github.com/faycal92"
+            href="https://www.linkedin.com/in/faycal-bouzid"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-slate-500 transition-colors hover:text-primary"
           >
-            GitHub
+            LinkedIn
           </Link>
           <Link
-            href="mailto:movevtc.fr@gmail.com"
+            href="mailto:faycalbo@hotmail.fr"
             className="text-sm text-slate-500 transition-colors hover:text-primary"
           >
-            movevtc.fr@gmail.com
+            faycalbo@hotmail.fr
           </Link>
         </div>
       </div>
