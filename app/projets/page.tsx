@@ -51,8 +51,8 @@ function ProjectCard({ project }: { project: Project }) {
         }`}
       />
 
-      <div className="flex flex-1 flex-col p-8">
-        <div className="mb-4 flex items-center justify-between gap-3">
+      <div className="flex flex-1 flex-col p-6 sm:p-8">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <h2
             className={`text-2xl font-bold ${
               isGold ? "text-amber-400" : "text-slate-900"

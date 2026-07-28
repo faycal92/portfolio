@@ -8,7 +8,6 @@ export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [sent, setSent] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -19,7 +18,6 @@ export default function ContactForm() {
     );
 
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
   }
 
   return (
@@ -87,12 +85,6 @@ export default function ContactForm() {
       >
         Envoyer le message
       </button>
-
-      {sent && (
-        <p className="text-center text-sm text-primary">
-          Votre client email va s&apos;ouvrir pour finaliser l&apos;envoi.
-        </p>
-      )}
     </form>
   );
 }

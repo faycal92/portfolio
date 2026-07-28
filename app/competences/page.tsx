@@ -53,7 +53,7 @@ export default function CompetencesPage() {
         {CATEGORIES.map((category) => (
           <div
             key={category.title}
-            className="rounded-2xl border border-slate-200 p-8 transition-shadow hover:shadow-lg hover:shadow-primary/5"
+            className="rounded-2xl border border-slate-200 p-6 sm:p-8 transition-shadow hover:shadow-lg hover:shadow-primary/5"
           >
             <h2 className="mb-6 flex items-center gap-3 text-xl font-bold text-slate-900">
               <span className="h-2.5 w-2.5 rounded-full bg-primary" />
