@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Projets",
   description:
-    "Découvrez PrivateMove (réservation VTC) et Horizon Immobilier (agence immobilière), les sites développés par Fayçal Bouzid.",
+    "Découvrez PrivateMove (réservation VTC), Horizon Immobilier (agence immobilière) et DriveConnect (services web pour chauffeurs VTC), les sites développés par Fayçal Bouzid.",
 };
 
 type Score = {
@@ -50,6 +50,19 @@ const PROJECTS: Project[] = [
     score: { label: "SEO", value: 100 },
     theme: "blue",
     link: "https://horizon-immobilier-alpha.vercel.app",
+  },
+  {
+    name: "DriveConnect",
+    description:
+      "Site de vente de services web destiné aux chauffeurs VTC. Présentation des offres, réalisations, FAQ et blog SEO pour le référencement naturel.",
+    features: [
+      "Trois offres détaillées avec comparatif",
+      "Section réalisations et FAQ",
+      "Blog optimisé pour le référencement",
+    ],
+    score: { label: "SEO", value: 100 },
+    theme: "blue",
+    link: "https://chauffeurpro.vercel.app",
   },
 ];
 
@@ -173,7 +186,7 @@ export default function ProjetsPage() {
         </p>
       </div>
 
-      <div className="mx-auto mt-14 grid gap-8 lg:grid-cols-2">
+      <div className="mx-auto mt-14 grid gap-8 lg:grid-cols-3">
         {PROJECTS.map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}
