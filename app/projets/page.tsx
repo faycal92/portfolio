@@ -17,7 +17,7 @@ type Project = {
   description: string;
   technologies?: string[];
   features?: string[];
-  scores: Score[];
+  score: Score;
   theme: "gold" | "blue";
   link?: string;
 };
@@ -34,12 +34,7 @@ const PROJECTS: Project[] = [
       "Stripe (paiement sécurisé)",
       "Twilio (notifications WhatsApp automatiques)",
     ],
-    scores: [
-      { label: "Performance", value: 99 },
-      { label: "Accessibilité", value: 100 },
-      { label: "Bonnes pratiques", value: 100 },
-      { label: "SEO", value: 100 },
-    ],
+    score: { label: "SEO", value: 100 },
     theme: "gold",
     link: "https://privatemove.fr",
   },
@@ -52,12 +47,7 @@ const PROJECTS: Project[] = [
       "Fiches détaillées avec galerie photos",
       "Espace équipe et blog conseils",
     ],
-    scores: [
-      { label: "Performance", value: 96 },
-      { label: "Accessibilité", value: 100 },
-      { label: "Bonnes pratiques", value: 100 },
-      { label: "SEO", value: 100 },
-    ],
+    score: { label: "SEO", value: 100 },
     theme: "blue",
     link: "https://horizon-immobilier-alpha.vercel.app",
   },
@@ -81,13 +71,24 @@ function ProjectCard({ project }: { project: Project }) {
       />
 
       <div className="flex flex-1 flex-col p-6 sm:p-8">
-        <h2
-          className={`mb-4 text-2xl font-bold ${
-            isGold ? "text-amber-400" : "text-slate-900"
-          }`}
-        >
-          {project.name}
-        </h2>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <h2
+            className={`text-2xl font-bold ${
+              isGold ? "text-amber-400" : "text-slate-900"
+            }`}
+          >
+            {project.name}
+          </h2>
+          <span
+            className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
+              isGold
+                ? "bg-amber-400/10 text-amber-400"
+                : "bg-primary/10 text-primary"
+            }`}
+          >
+            {project.score.label} {project.score.value}/100
+          </span>
+        </div>
 
         <p
           className={`mb-6 flex-1 leading-relaxed ${
@@ -134,43 +135,6 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </ul>
         ) : null}
-
-        <div className="mb-6">
-          <p
-            className={`mb-3 text-xs font-semibold uppercase tracking-wide ${
-              isGold ? "text-slate-500" : "text-slate-400"
-            }`}
-          >
-            Scores Google
-          </p>
-          <div className="grid grid-cols-2 gap-3">
-            {project.scores.map((score) => (
-              <div
-                key={score.label}
-                className={`rounded-lg border px-3 py-2 text-center ${
-                  isGold
-                    ? "border-slate-800 bg-slate-800/50"
-                    : "border-slate-100 bg-slate-50"
-                }`}
-              >
-                <p
-                  className={`text-lg font-bold ${
-                    isGold ? "text-amber-400" : "text-primary"
-                  }`}
-                >
-                  {score.value}/100
-                </p>
-                <p
-                  className={`text-xs ${
-                    isGold ? "text-slate-400" : "text-slate-500"
-                  }`}
-                >
-                  {score.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {project.link ? (
           <Link
