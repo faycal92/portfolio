@@ -61,7 +61,7 @@ const PROJECTS: Project[] = [
       "Blog optimisé pour le référencement",
     ],
     score: { label: "SEO", value: 100 },
-    theme: "blue",
+    theme: "gold",
     link: "https://chauffeurpro.vercel.app",
   },
 ];
