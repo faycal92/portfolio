@@ -12,6 +12,11 @@ const config: Config = {
           DEFAULT: "#2563EB",
           dark: "#1E40AF",
         },
+        bordeaux: {
+          DEFAULT: "#6B2737",
+          dark: "#551F2C",
+        },
+        cream: "#FBF6EF",
       },
       animation: {
         "fade-in": "fadeIn 0.8s ease-out forwards",

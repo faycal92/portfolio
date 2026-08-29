@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Projets",
   description:
-    "Découvrez PrivateMove (réservation VTC), Horizon Immobilier (agence immobilière) et DriveConnect (services web pour chauffeurs VTC), les sites développés par Fayçal Bouzid.",
+    "Découvrez PrivateMove (réservation VTC), Horizon Immobilier (agence immobilière), DriveConnect (services web pour chauffeurs VTC) et Aquitaine Prestige (chauffeur privé VTC à Bordeaux), les sites développés par Fayçal Bouzid.",
 };
 
 type Score = {
@@ -12,14 +12,60 @@ type Score = {
   value: number;
 };
 
+type Theme = "gold" | "blue" | "bordeaux";
+
 type Project = {
   name: string;
   description: string;
   technologies?: string[];
   features?: string[];
   score: Score;
-  theme: "gold" | "blue";
+  theme: Theme;
   link?: string;
+};
+
+type ThemeTokens = {
+  card: string;
+  bar: string;
+  title: string;
+  badge: string;
+  body: string;
+  tag: string;
+  bullet: string;
+  button: string;
+};
+
+const THEMES: Record<Theme, ThemeTokens> = {
+  gold: {
+    card: "border-slate-800 bg-slate-900 hover:shadow-amber-500/10",
+    bar: "bg-gradient-to-r from-amber-400 to-amber-600",
+    title: "text-amber-400",
+    badge: "bg-amber-400/10 text-amber-400",
+    body: "text-slate-300",
+    tag: "bg-slate-800 text-slate-200",
+    bullet: "bg-amber-400",
+    button: "bg-amber-400 text-slate-900 hover:bg-amber-300",
+  },
+  blue: {
+    card: "border-slate-200 bg-white hover:shadow-primary/10",
+    bar: "bg-primary",
+    title: "text-slate-900",
+    badge: "bg-primary/10 text-primary",
+    body: "text-slate-600",
+    tag: "bg-slate-100 text-slate-700",
+    bullet: "bg-primary",
+    button: "bg-primary text-white hover:bg-primary-dark",
+  },
+  bordeaux: {
+    card: "border-bordeaux/15 bg-cream hover:shadow-bordeaux/10",
+    bar: "bg-bordeaux",
+    title: "text-bordeaux",
+    badge: "bg-bordeaux/10 text-bordeaux",
+    body: "text-slate-600",
+    tag: "bg-bordeaux/5 text-bordeaux",
+    bullet: "bg-bordeaux",
+    button: "bg-bordeaux text-white hover:bg-bordeaux-dark",
+  },
 };
 
 const PROJECTS: Project[] = [
@@ -64,50 +110,42 @@ const PROJECTS: Project[] = [
     theme: "gold",
     link: "https://chauffeurpro.vercel.app",
   },
+  {
+    name: "Aquitaine Prestige",
+    description:
+      "Site vitrine pour un chauffeur privé VTC à Bordeaux, spécialisé dans les transferts aéroport et la clientèle affaires. Présentation des services, grille tarifaire et formulaire de contact.",
+    features: [
+      "Présentation détaillée des services et de la zone d'intervention",
+      "Grille tarifaire claire",
+      "Formulaire de contact et lien WhatsApp",
+      "Optimisé pour la recherche locale",
+    ],
+    score: { label: "SEO", value: 100 },
+    theme: "bordeaux",
+    link: "https://aquitaine-prestige.vercel.app",
+  },
 ];
 
 function ProjectCard({ project }: { project: Project }) {
-  const isGold = project.theme === "gold";
+  const t = THEMES[project.theme];
 
   return (
     <article
-      className={`group flex h-full flex-col overflow-hidden rounded-2xl border transition-all hover:-translate-y-1 hover:shadow-xl ${
-        isGold
-          ? "border-slate-800 bg-slate-900 hover:shadow-amber-500/10"
-          : "border-slate-200 bg-white hover:shadow-primary/10"
-      }`}
+      className={`group flex h-full flex-col overflow-hidden rounded-2xl border transition-all hover:-translate-y-1 hover:shadow-xl ${t.card}`}
     >
-      <div
-        className={`h-2 w-full ${
-          isGold ? "bg-gradient-to-r from-amber-400 to-amber-600" : "bg-primary"
-        }`}
-      />
+      <div className={`h-2 w-full ${t.bar}`} />
 
       <div className="flex flex-1 flex-col p-6 sm:p-8">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <h2
-            className={`text-2xl font-bold ${
-              isGold ? "text-amber-400" : "text-slate-900"
-            }`}
-          >
-            {project.name}
-          </h2>
+          <h2 className={`text-2xl font-bold ${t.title}`}>{project.name}</h2>
           <span
-            className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
-              isGold
-                ? "bg-amber-400/10 text-amber-400"
-                : "bg-primary/10 text-primary"
-            }`}
+            className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${t.badge}`}
           >
             {project.score.label} {project.score.value}/100
           </span>
         </div>
 
-        <p
-          className={`mb-6 flex-1 leading-relaxed ${
-            isGold ? "text-slate-300" : "text-slate-600"
-          }`}
-        >
+        <p className={`mb-6 flex-1 leading-relaxed ${t.body}`}>
           {project.description}
         </p>
 
@@ -116,11 +154,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className={`rounded-md px-2.5 py-1 text-xs font-medium ${
-                  isGold
-                    ? "bg-slate-800 text-slate-200"
-                    : "bg-slate-100 text-slate-700"
-                }`}
+                className={`rounded-md px-2.5 py-1 text-xs font-medium ${t.tag}`}
               >
                 {tech}
               </span>
@@ -133,15 +167,11 @@ function ProjectCard({ project }: { project: Project }) {
             {project.features.map((feature) => (
               <li
                 key={feature}
-                className={`flex items-start gap-2 text-sm leading-relaxed ${
-                  isGold ? "text-slate-300" : "text-slate-600"
-                }`}
+                className={`flex items-start gap-2 text-sm leading-relaxed ${t.body}`}
               >
                 <span
                   aria-hidden="true"
-                  className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${
-                    isGold ? "bg-amber-400" : "bg-primary"
-                  }`}
+                  className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${t.bullet}`}
                 />
                 {feature}
               </li>
@@ -154,11 +184,7 @@ function ProjectCard({ project }: { project: Project }) {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors ${
-              isGold
-                ? "bg-amber-400 text-slate-900 hover:bg-amber-300"
-                : "bg-primary text-white hover:bg-primary-dark"
-            }`}
+            className={`inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors ${t.button}`}
           >
             Voir le site
             <span aria-hidden="true">→</span>
@@ -186,7 +212,7 @@ export default function ProjetsPage() {
         </p>
       </div>
 
-      <div className="mx-auto mt-14 grid gap-8 lg:grid-cols-3">
+      <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2">
         {PROJECTS.map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}
