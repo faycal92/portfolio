@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fayçal Bouzid – Développeur Web Full-Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAF9F5;--fg:#16233B;--muted:#4B5563;--card:#FFFFFF;--line:#D9D6CC;--accent:#9A5B00;--on:#FFFFFF;--chip:#F1EEE4}
+[data-theme=dark]{--bg:#101A2E;--fg:#F3F4F6;--muted:#B6BFCE;--card:#16233B;--line:rgba(255,255,255,.18);--accent:#F2B552;--on:#16233B;--chip:rgba(255,255,255,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;transition:background .3s,color .3s}
+a{text-decoration:none;color:inherit}
+ul{margin:0;padding:0;list-style:none}
+button{font-family:inherit;cursor:pointer;color:inherit}
+h1,h2,.sg{font-family:'Space Grotesk','Inter',system-ui,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 24px 64px;display:flex;flex-direction:column;gap:56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.top b{font-size:15px;letter-spacing:.04em}
+.pill{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:500}
+.eyebrow{font-weight:500;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{margin:0;font-weight:700;font-size:clamp(40px,8vw,72px);line-height:1}
+.lead{margin:0;max-width:720px;font-size:17px;line-height:1.65;color:var(--muted)}
+.hero{display:flex;flex-direction:column;gap:22px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{min-height:48px;padding:0 24px;border-radius:999px;border:1px solid var(--line);font-weight:500;font-size:15px;display:inline-flex;align-items:center;transition:transform .2s,opacity .2s}
+.btn.main{background:var(--accent);color:var(--on);border-color:var(--accent);font-weight:600}
+.btn:hover,.pill:hover{transform:translateY(-2px);opacity:.92}
+.info{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;color:var(--muted)}
+.sec{display:flex;flex-direction:column;gap:18px}
+h2{margin:0;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:14px;font-weight:600;transition:transform .2s}
+.chip:hover{transform:translateY(-3px)}
+.job{border-radius:20px;border:1px solid var(--line);background:var(--card);overflow:hidden;transition:box-shadow .25s,border-color .25s}
+.job.open{border-color:var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.job>button{width:100%;min-height:64px;padding:20px 24px;border:0;background:transparent;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left}
+.job .t{display:flex;flex-direction:column;gap:4px}
+.job .t b{font-family:'Space Grotesk','Inter',sans-serif;font-size:19px}
+.job .t span{font-size:13px;color:var(--muted)}
+.plus{flex:none;width:32px;height:32px;border-radius:50%;background:var(--chip);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;transition:transform .25s}
+.job.open .plus{transform:rotate(45deg)}
+.job ul{display:none;padding:0 24px 24px;flex-direction:column;gap:10px}
+.job.open ul{display:flex}
+.job li{display:flex;gap:12px;font-size:15px;line-height:1.6;color:var(--muted);animation:slide .4s ease both}
+.job li i{flex:none;margin-top:10px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.tabs{display:flex;flex-wrap:wrap;gap:10px}
+.tab{min-height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:14px;font-weight:600}
+.tab[aria-pressed=true]{background:var(--accent);color:var(--on);border-color:var(--accent)}
+.panel{border-radius:20px;border:1px solid var(--line);background:var(--card);padding:24px;display:flex;flex-direction:column;gap:12px;min-height:120px}
+.panel b{font-family:'Space Grotesk','Inter',sans-serif;font-size:18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{padding:8px 14px;border-radius:10px;background:var(--chip);font-size:14px;animation:pop .4s ease both}
+.cols{display:flex;flex-wrap:wrap;gap:24px}
+.cols>div{flex:1 1 300px;min-width:0}
+.cols>div:first-child{flex-basis:440px}
+.card{border-radius:20px;border:1px solid var(--line);background:var(--card);padding:22px 24px;display:flex;flex-direction:column;gap:4px}
+.card small{font-size:13px;color:var(--muted)}
+.card b{font-family:'Space Grotesk','Inter',sans-serif;font-size:17px}
+.card span{font-size:14px;color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:18px}
+.lang{display:flex;flex-direction:column;gap:8px}
+.lang div:first-child{display:flex;justify-content:space-between;font-size:14px}
+.lang span{color:var(--muted)}
+.bar{height:6px;border-radius:3px;background:var(--chip);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:var(--accent)}
+.rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+@keyframes slide{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+button:focus-visible,a:focus-visible{outline:3px solid #F2B552;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top">
+<b class="sg">Fayçal Bouzid</b>
+<button class="pill" id="theme" type="button">Mode sombre</button>
+</div>
+
+<div class="hero">
+<div class="eyebrow rise">Développeur Web Full-Stack</div>
+<h1 class="rise" style="animation-delay:.08s">Fayçal Bouzid</h1>
+<p class="lead rise" style="animation-delay:.16s">Développeur full-stack formé à l'école O'clock, spécialisé Next.js, PHP (Laravel, Symfony) et Java, je recherche un poste en full remote. Créateur de plusieurs produits web pour le secteur du transport, j'allie rigueur technique, sens du service client et autonomie sur des projets menés de bout en bout, du devis à la mise en ligne.</p>
+<div class="btns rise" style="animation-delay:.24s">
+<a class="btn main" href="tel:+33750978900">Me contacter</a>
+<a class="btn" href="https://www.linkedin.com/in/faycal-bouzid" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="https://portfolio-psi-bice-99.vercel.app/projets" target="_blank" rel="noopener">Portfolio</a>
+</div>
+<div class="info rise" style="animation-delay:.3s">
+<span>Gennevilliers (92), France</span><a href="tel:+33750978900">07 50 97 89 00</a><a href="mailto:faycalbo@hotmail.fr">faycalbo@hotmail.fr</a>
+</div>
+</div>
+
+<div class="sec">
+<h2>Stack technique</h2>
+<div class="chips">
+<span class="chip">Next.js</span><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span><span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">Symfony</span><span class="chip">Java</span>
+</div>
+</div>
+
+<div class="sec">
+<h2>Expérience</h2>
+<div id="jobs" class="sec" style="gap:18px"></div>
+</div>
+
+<div class="sec">
+<h2>Compétences</h2>
+<div class="tabs" id="tabs"></div>
+<div class="panel"><b id="skillTitle"></b><div class="tags" id="skillItems"></div></div>
+</div>
+
+<div class="cols">
+<div class="stack">
+<h2>Formation</h2>
+<div class="card"><small>2022</small><b>Diplôme de développeur web full-stack (niveau BTS)</b><span>École O'clock</span></div>
+<div class="card"><small>2018 – 2020</small><b>BTS Négociation et Digitalisation de la Relation Client</b><span>Lycée Michel-Ange, Villeneuve-la-Garenne</span></div>
+</div>
+<div class="stack">
+<h2>Langues</h2>
+<div class="card" style="gap:18px">
+<div class="lang"><div><b style="font-family:inherit;font-size:14px">Français</b><span>Langue maternelle</span></div><div class="bar"><i style="width:100%"></i></div></div>
+<div class="lang"><div><b style="font-family:inherit;font-size:14px">Arabe</b><span>Courant</span></div><div class="bar"><i style="width:85%"></i></div></div>
+<div class="lang"><div><b style="font-family:inherit;font-size:14px">Anglais</b><span>Débutant</span></div><div class="bar"><i style="width:25%"></i></div></div>
+</div>
+</div>
+</div>
+
+</div>
+<script>
+(function(){
+var jobs=[
+{t:"Fondateur de l'agence AssiWeb, développeur web freelance",p:"Juin 2026 – aujourd'hui",b:["Conception et vente de sites web pour des TPE : devis, développement, mise en ligne","Réalisation de supports graphiques (cartes de menu, écrans dynamiques) pour un restaurant au Caire","Prospection et suivi de clients : demandes de devis, relances et propositions de sites sur mesure"]},
+{t:"Gérant, Duty Drive (SAS, VTC), Paris 8e",p:"Avril 2026 – aujourd'hui",b:["Création et gestion d'une société de transport de personnes : relation client, administratif, documents légaux","Conception de PrivateMove, site de réservation VTC bilingue pour Paris et l'Île-de-France","Conception de DriveConnect, offre de sites web destinée aux chauffeurs VTC"]},
+{t:"Responsable digital, Transport Luxury (transport de marchandises)",p:"2020 – 2022",b:["Gestion de la présence digitale et de la communication en ligne de l'entreprise"]}
+];
+var skills=[
+{l:"Front-end",t:"Développement front-end",i:["Next.js (React)","JavaScript","HTML","CSS","Sites responsives","Sites bilingues"]},
+{l:"Back-end",t:"Développement back-end",i:["PHP","Laravel","Symfony","Java"]},
+{l:"Produit web",t:"Produit web",i:["Sites vitrines","Plateformes de réservation","Back-offices","Devis","Cahier des charges"]},
+{l:"Marketing digital",t:"Marketing digital",i:["Google Ads","Meta Ads","SEO de base","Automatisations","Outils d'IA"]},
+{l:"Création graphique",t:"Création graphique",i:["Menus papier","Écrans dynamiques"]},
+{l:"Gestion d'entreprise",t:"Gestion d'entreprise",i:["Relation client","Administratif","Gestion d'une société (SAS)"]}
+];
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+var jobsBox=document.getElementById('jobs');
+jobs.forEach(function(j,idx){
+var box=el('div','job'+(idx===0?' open':''));
+var btn=el('button');btn.type='button';btn.setAttribute('aria-expanded',idx===0?'true':'false');
+var t=el('span','t');t.appendChild(el('b',null,j.t));t.appendChild(el('span',null,j.p));
+btn.appendChild(t);btn.appendChild(el('span','plus','+'));
+var ul=el('ul');
+j.b.forEach(function(x,k){var li=el('li');li.style.animationDelay=(k*0.08)+'s';li.appendChild(el('i'));li.appendChild(el('span',null,x));ul.appendChild(li)});
+btn.addEventListener('click',function(){var o=!box.classList.contains('open');box.classList.toggle('open',o);btn.setAttribute('aria-expanded',o?'true':'false')});
+box.appendChild(btn);box.appendChild(ul);jobsBox.appendChild(box);
+});
+var tabs=document.getElementById('tabs');
+function showSkill(n){
+Array.prototype.forEach.call(tabs.children,function(b,i){b.setAttribute('aria-pressed',i===n?'true':'false')});
+document.getElementById('skillTitle').textContent=skills[n].t;
+var box=document.getElementById('skillItems');box.textContent='';
+skills[n].i.forEach(function(x,k){var s=el('span',null,x);s.style.animationDelay=(k*0.05)+'s';box.appendChild(s)});
+}
+skills.forEach(function(s,i){var b=el('button','tab',s.l);b.type='button';b.addEventListener('click',function(){showSkill(i)});tabs.appendChild(b)});
+showSkill(0);
+var theme=document.getElementById('theme');
+theme.addEventListener('click',function(){
+var d=document.documentElement.getAttribute('data-theme')==='dark';
+document.documentElement.setAttribute('data-theme',d?'light':'dark');
+theme.textContent=d?'Mode sombre':'Mode clair';
+});
+})();
+</script>
+</body>
+</html>
